@@ -1,4 +1,5 @@
 import * as model from "./model.js";
+import recipeView from "./views/recipeView.js";
 import icons from "url:../img/icons.svg";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
@@ -31,6 +32,7 @@ const showRecipe = async function () {
     renderSpinner(recipeContainer);
     await model.loadRecipe(id);
     const { recipe } = model.state;
+    recipeView.render(model.state.recipe);
     const markup = `  <figure class="recipe__fig">
           <img src="${recipe.image}" alt="${
       recipe.title
