@@ -1,4 +1,3 @@
-import { async } from "regenerator-runtime";
 import { API_URL } from "./config";
 import { getJSON } from "./helpers";
 import { RES_PER_PAGE } from "./config";
@@ -43,6 +42,7 @@ export const loadSearchResults = async function (query) {
         image: rec.image_url,
       };
     });
+    state.search.page = 1;
   } catch (err) {
     console.error(`${err}`);
     throw err;
