@@ -5,6 +5,8 @@ import "regenerator-runtime/runtime";
 import searchView from "./views/searchView.js";
 import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
+import { addBoookmark } from "./model.js";
+import { deleteBookmark } from "./model.js";
 console.log(model);
 console.log(typeof model.updateServings);
 if (module.hot) {
@@ -53,7 +55,8 @@ const controlServings = function (newServings) {
 };
 
 const controlAddBookmark = function () {
-  model.addBoookmark(model.state.recipe);
+  if (!model.state.recipe.bookmarked) model.addBoookmark(model.state.recipe);
+  else model.deleteBookmark(model.state.recipe.id);
   recipeView.update(model.state.recipe);
 };
 
