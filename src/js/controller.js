@@ -5,13 +5,9 @@ import "regenerator-runtime/runtime";
 import searchView from "./views/searchView.js";
 import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
+import bookmarksView from "./views/bookmarksView.js";
 import { addBoookmark } from "./model.js";
 import { deleteBookmark } from "./model.js";
-console.log(model);
-console.log(typeof model.updateServings);
-if (module.hot) {
-  module.hot.accept();
-}
 
 const recipeContainer = document.querySelector(".recipe");
 
@@ -22,6 +18,7 @@ const controlRecipes = async function () {
     recipeView.renderSpinner();
 
     resultsView.update(model.getSearchResultsPage());
+    bookmarksView.update(model.state.bookmarks);
     await model.loadRecipe(id);
     recipeView.render(model.state.recipe);
   } catch (err) {
@@ -58,6 +55,8 @@ const controlAddBookmark = function () {
   if (!model.state.recipe.bookmarked) model.addBoookmark(model.state.recipe);
   else model.deleteBookmark(model.state.recipe.id);
   recipeView.update(model.state.recipe);
+
+  bookmarksView.render(model.state.bookmarks);
 };
 
 const init = function () {
