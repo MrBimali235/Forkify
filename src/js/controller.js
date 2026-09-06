@@ -7,7 +7,6 @@ import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
 import bookmarksView from "./views/bookmarksView.js";
 import addRecipeView from "./views/addRecipeView.js";
-import { MODAL_CLOSE_SEC } from "./config.js";
 import { addBoookmark } from "./model.js";
 import { deleteBookmark } from "./model.js";
 import { MODAL_CLOSE_SEC } from "./config.js";
@@ -77,7 +76,7 @@ const controlAddRecipe = async function (newRecipe) {
     window.history.pushState(null, "", `#${model.state.recipe.id}`);
 
     setTimeout(function () {
-      addRecipeView.toggleWindow();
+      addRecipeView.hideWindow();
     }, MODAL_CLOSE_SEC * 1000);
   } catch (err) {
     addRecipeView.renderError(err.message);
