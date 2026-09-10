@@ -8,10 +8,10 @@
   "targets": {
     "main": false
   },
-  "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist --no-scope-hoist"
-  },
+"scripts": {
+  "start": "parcel index.html",
+  "build": "parcel build index.html --dist-dir ./dist --no-scope-hoist --no-optimize"
+},
   "dependencies": {
     "core-js": "^3.49.0",
     "fraction.js": "^5.3.4",
