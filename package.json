@@ -5,10 +5,12 @@
   "license": "ISC",
   "author": "",
   "type": "commonjs",
-  "default": "index.html",
+  "targets": {
+    "main": false
+  },
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "build": "parcel build index.html --dist-dir ./dist --no-scope-hoist"
   },
   "dependencies": {
     "core-js": "^3.49.0",
